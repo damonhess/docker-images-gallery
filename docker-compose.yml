@@ -1,0 +1,15 @@
+services:
+  frontend:
+    build: ./frontend
+    environment:
+      NODE_OPTIONS: --openssl-legacy-provider
+      HOST: 0.0.0.0
+      CHOKIDAR_USEPOLLING: "true"
+    ports:
+      - '3000:3000'
+    depends_on:
+      - api
+  api:
+    build: ./api
+    ports:
+      - '5050:5050'
